@@ -27,8 +27,45 @@ function TablePlayersDirective () {
         scope: {
             players: '='
         },
-        controller: function() {
-        },
+        controller: ['$scope', function($scope) {
+          console.log('table player scope', $scope);
+
+          $scope.sortPlayersByName = function () {
+            console.log('button clicked');
+            console.log('players count', $scope.players.length);
+
+            $scope.players.sort((a, b) => {
+              const nameA = a.Name.toUpperCase(); // ignore upper and lowercase
+              const nameB = b.Name.toUpperCase(); // ignore upper and lowercase
+              if (nameA < nameB) {
+                return -1;
+              }
+              if (nameA > nameB) {
+                return 1;
+              }
+
+              return 0;
+            });
+          };
+
+          $scope.sortPlayersByWins = function () {
+            console.log('button clicked');
+            console.log('players count', $scope.players.length);
+
+            $scope.players.sort((a, b) => {
+              return b.Won - a.Won;
+            });
+          };
+
+          $scope.sortPlayersByParticipation = function () {
+            console.log('button clicked');
+            console.log('players count', $scope.players.length);
+
+            $scope.players.sort((a, b) => {
+              return b.Played - a.Played;
+            });
+          };
+        }],
         link: function(scope, element) {
         }
     };
