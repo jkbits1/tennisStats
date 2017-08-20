@@ -48,6 +48,15 @@ function TablePlayersDirective () {
             });
           };
 
+          $scope.sortPlayersByRank = function () {
+            console.log('button clicked');
+            console.log('players count', $scope.players.length);
+
+            $scope.players.sort((a, b) => {
+              return a.Rank - b.Rank;
+            });
+          };
+
           $scope.sortPlayersByWins = function () {
             console.log('button clicked');
             console.log('players count', $scope.players.length);

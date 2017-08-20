@@ -1,7 +1,18 @@
+<button ng-click="sortPlayersByRank()">Sort by Rank</button>
 <button ng-click="sortPlayersByName()">Sort by Name</button>
 <button ng-click="sortPlayersByWins()">Sort by Wins</button>
 <button ng-click="sortPlayersByParticipation()">Sort by Events</button>
 <table class="table table-player" ng-show="players.length">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Played</th>
+          <th>Wins</th>
+          <th>Sets</th>
+          <th>Games</th>
+        </tr>
+      </thead>
     <tbody>
         <tr row-player ng-repeat="player in players track by $index"
                   player="player">
