@@ -3,21 +3,22 @@
 function TablePlayersDirective () {
     return {
         restrict: 'E',
-        template: [
-            '<table class="table table-player" ng-show="players.length">',
-                // '<thead>',
-                //     '<tr>',
-                //         '<th class="query-name">Name</th>',
-                //         '<th class="query-status">Status</th>',
-                //     '</tr>',
-                // '</thead>',
-                '<tbody>',
-                    '<tr row-player ng-repeat="player in players track by $index"',
-                             'player="player">',
-                    '</tr>',
-                '</tbody>',
-            '</table>'
-        ].join(''),
+        templateUrl: './app/components/TablePlayers.html',
+        // template: [
+        //     '<table class="table table-player" ng-show="players.length">',
+        //         // '<thead>',
+        //         //     '<tr>',
+        //         //         '<th class="query-name">Name</th>',
+        //         //         '<th class="query-status">Status</th>',
+        //         //     '</tr>',
+        //         // '</thead>',
+        //         '<tbody>',
+        //             '<tr row-player ng-repeat="player in players track by $index"',
+        //                      'player="player">',
+        //             '</tr>',
+        //         '</tbody>',
+        //     '</table>'
+        // ].join(''),
         scope: {
             players: '='
         },
