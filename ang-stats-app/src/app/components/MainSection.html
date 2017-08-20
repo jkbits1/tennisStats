@@ -1,4 +1,15 @@
 <section class="main">
+  <div ng-controller="tableRowsFiveController">
+    123
+    <table-players players="players"></table-players>
+  </div>
+  <table>
+    <tr ng-repeat="todo in $ctrl.todos">
+      <!--<td>{{todo.text}}</td>-->
+      <td>{{todo.Rank}}</td>
+      <td>{{todo.Name}}</td>
+    </tr>
+  </table>
   <table class="todo-list">
     <todo-item
       ng-repeat="todo in $ctrl.todos | filter : $ctrl.selectedFilter.filter"
@@ -10,11 +21,17 @@
   </table>
   Players
   <ul class="player-list">
-    <player-item
+    <li player-item
       ng-repeat="player in $ctrl.players"
       player="player"
-    ></player-item>
+    >
+    </li>
+    <!--</player-item>-->
   </ul>
+  Team
+  <team-component
+    players="$ctrl.players"
+  ></team-component>
   <input ng-if="$ctrl.todos.length"
   class="toggle-all"
   type="checkbox"
@@ -24,7 +41,7 @@
 
   <footer-component ng-if="$ctrl.todos.length"
     completed-count="$ctrl.todos.reduce($ctrl.completeReducer, 0)"
-    active-count="$ctrl.todos.length - $ctr.todos.reduce($ctrl.completeReducer, 0)"
+    active-count="$ctrl.todos.length - $ctrl.todos.reduce($ctrl.completeReducer, 0)"
     filter="$ctrl.selectedFilter"
     on-clear-completed="$ctrl.handleClearCompleted()"
     on-show="$ctrl.handleShow(filter)"

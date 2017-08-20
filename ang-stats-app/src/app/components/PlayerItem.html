@@ -18,8 +18,12 @@
     <button class="destroy" ng-click="$ctrl.handleDestroy($ctrl.todo.id)"></button>
   </div>
 </li>-->
-<li>
-  <div class="view">
-    <label>{{$ctrl.player.text}}</label>
-  </div>
-</li>
+<!--<tr class="player-item">-->
+<tr>
+  <!--<td>123</td>-->
+  <td>{{player.Rank}}</td>
+  <td>{{player.Name}}</td>
+  <td>{{player.Won}}</td>
+  <td>{{$ctrl.player.Sets}}</td>
+  <td>{{$ctrl.player.Games}}</td>
+</tr>

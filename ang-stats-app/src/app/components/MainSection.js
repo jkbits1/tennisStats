@@ -44,6 +44,7 @@ export const MainSection = {
   controller: MainSectionController,
   bindings: {
     todos: '=',
+    players: '<',
     filter: '<'
   }
 };

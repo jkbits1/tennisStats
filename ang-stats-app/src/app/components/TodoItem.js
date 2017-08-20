@@ -1,6 +1,7 @@
 class TodoItemController {
   constructor() {
     this.editing = false;
+    this.text = 'testx';
   }
 
   handleDoubleClick() {

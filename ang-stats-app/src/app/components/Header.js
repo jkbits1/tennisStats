@@ -16,6 +16,7 @@ export const Header = {
   template: require('./Header.html'),
   controller: HeaderController,
   bindings: {
-    todos: '='
+    todos: '=',
+    players: '='
   }
 };

@@ -1,0 +1,25 @@
+<span>team list</span>
+<!--
+  mainly going with this answer
+  https://stackoverflow.com/questions/27448789/angularjs-nested-directives-are-inserted-outside-their-supposed-parent-element
+
+  several useful ideas here
+  https://stackoverflow.com/questions/15362868/adding-rows-with-ng-repeat-and-nested-loop
+-->
+<table class="team">
+  <tbody>
+
+  <tr player-item
+    ng-repeat="player in $ctrl.players"
+    player="player"
+  >
+    <!--<td>{{player.Rank}}</td>-->
+
+  </tr>
+
+    <!--<td>{{player.Rank}}</td>
+    <td>{{player.Name}}</td>-->
+  <!--</player-item>-->
+  </tbody>
+  <!--<span>team list end</span>-->
+</table>
