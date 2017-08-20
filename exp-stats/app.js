@@ -96,7 +96,10 @@ app.use(function(err, req, res, next) {
 app.get('/players', (req, res) => {
 
   db.find({}, (err, players) => {
-    res.send(players);
+    console.log("found players");
+    // res.send(players);
+    // res.jsonp(players);
+    res.json(players);
   });
 
 });

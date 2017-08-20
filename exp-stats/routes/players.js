@@ -35,7 +35,10 @@ router.get('/', function(req, res, next) {
       throw err;
     }
 
-    res.send(players);
+    console.log("returning players");
+
+    // res.send(players);
+    res.jsonp(players);
   });
 
 });
