@@ -40,4 +40,5 @@ angular
   // .controller('tableRowsController', TableRows)
   .controller('tableRowsFiveController', TableRowsFiveCtrl)
   .directive('tablePlayers', TablePlayers)
+  // .component('tablePlayers', TablePlayers)
   .directive('rowPlayer', RowPlayer);

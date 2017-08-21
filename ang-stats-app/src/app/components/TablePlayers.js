@@ -106,7 +106,7 @@ function TablePlayersDirective () {
         restrict: 'E',
         templateUrl: './app/components/TablePlayers.html',
         scope: {
-            players: '='
+            players: '<'
         },
         controller: TablePlayersController,
         link: function(scope, element) {
