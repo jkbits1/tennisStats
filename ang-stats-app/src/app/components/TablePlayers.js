@@ -52,6 +52,51 @@ function TablePlayersController ($scope) {
       return b.Played - a.Played;
     });
   };
+
+  $scope.sortPlayersBySetsWon = function () {
+    console.log('button clicked');
+    console.log('players count', $scope.players.length);
+
+    function getWonCount (player) {
+      const info = player.Sets.split('');
+      const filt = info.filter(s => {
+        return s !== ' ';
+      });
+      const newJoin = filt.join('');
+
+      return Number(newJoin.split('-')[0]);
+    }
+
+    $scope.players.sort((a, b) => {
+      const aWon = getWonCount(a);
+      const bWon = getWonCount(b);
+
+      return bWon - aWon;
+    });
+  };
+
+  $scope.sortPlayersByGamesWon = function () {
+    console.log('button clicked');
+    console.log('players count', $scope.players.length);
+
+    function getGamesCount (player) {
+      const info = player.Games.split('');
+      const filt = info.filter(s => {
+        return s !== ' ';
+      });
+
+      const newJoin = filt.join('');
+
+      return Number(newJoin.split('-')[0]);
+    }
+
+    $scope.players.sort((a, b) => {
+      const aWon = getGamesCount(a);
+      const bWon = getGamesCount(b);
+
+      return bWon - aWon;
+    });
+  };
 }
 
 TablePlayersController.$inject = ['$scope'];
