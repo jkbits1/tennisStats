@@ -8,22 +8,24 @@
 function TablePlayersController ($scope) {
   console.log('table player scope', $scope);
 
+  const sortByName = (a, b) => {
+    const nameA = a.Name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.Name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+
+    return 0;
+  };
+
   $scope.sortPlayersByName = function () {
     console.log('button clicked');
     console.log('players count', $scope.players.length);
 
-    $scope.players.sort((a, b) => {
-      const nameA = a.Name.toUpperCase(); // ignore upper and lowercase
-      const nameB = b.Name.toUpperCase(); // ignore upper and lowercase
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-
-      return 0;
-    });
+    $scope.players.sort(sortByName);
   };
 
   $scope.sortPlayersByRank = function () {
@@ -40,7 +42,13 @@ function TablePlayersController ($scope) {
     console.log('players count', $scope.players.length);
 
     $scope.players.sort((a, b) => {
-      return b.Won - a.Won;
+      const wonMatch = b.Won - a.Won;
+
+      if (wonMatch === 0) {
+        return sortByName(a, b);
+      }
+
+      return wonMatch;
     });
   };
 
@@ -49,7 +57,13 @@ function TablePlayersController ($scope) {
     console.log('players count', $scope.players.length);
 
     $scope.players.sort((a, b) => {
-      return b.Played - a.Played;
+      const playedMatch = b.Played - a.Played;
+
+      if (playedMatch === 0) {
+        return sortByName(a, b);
+      }
+
+      return playedMatch;
     });
   };
 
@@ -71,7 +85,13 @@ function TablePlayersController ($scope) {
       const aWon = getWonCount(a);
       const bWon = getWonCount(b);
 
-      return bWon - aWon;
+      const wonMatch = bWon - aWon;
+
+      if (wonMatch === 0) {
+        return sortByName(a, b);
+      }
+
+      return wonMatch;
     });
   };
 
@@ -91,10 +111,16 @@ function TablePlayersController ($scope) {
     }
 
     $scope.players.sort((a, b) => {
-      const aWon = getGamesCount(a);
-      const bWon = getGamesCount(b);
+      const aGames = getGamesCount(a);
+      const bGames = getGamesCount(b);
 
-      return bWon - aWon;
+      const gamesMatch = bGames - aGames;
+
+      if (gamesMatch === 0) {
+        return sortByName(a, b);
+      }
+
+      return gamesMatch;
     });
   };
 }
