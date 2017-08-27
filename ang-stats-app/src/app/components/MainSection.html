@@ -2,14 +2,13 @@
   <div ng-controller="tableRowsFiveController">
     <table-players players="players"></table-players>
   </div>
-  <table>
+  <!--<table>
     <tr ng-repeat="todo in $ctrl.todos">
-      <!--<td>{{todo.text}}</td>-->
       <td>{{todo.Rank}}</td>
       <td>{{todo.Name}}</td>
     </tr>
-  </table>
-  <table class="todo-list">
+  </table>-->
+  <!--<table class="todo-list">
     <todo-item
       ng-repeat="todo in $ctrl.todos | filter : $ctrl.selectedFilter.filter"
       todo="todo"
@@ -17,17 +16,17 @@
       on-change="$ctrl.handleChange(id)"
       on-save="$ctrl.handleSave(todo)"
     ></todo-item>
-  </table>
-  Players
-  <ul class="player-list">
+  </table>-->
+  <!--Players-->
+  <!--<ul class="player-list">
     <li player-item
       ng-repeat="player in $ctrl.players"
       player="player"
     >
-    </li>
+    </li>-->
     <!--</player-item>-->
-  </ul>
-  Team
+  <!--</ul>-->
+  <!--Team
   <team-component
     players="$ctrl.players"
   ></team-component>
@@ -36,7 +35,7 @@
   type="checkbox"
   ng-checked="$ctrl.todos.reduce($ctrl.completeReducer, 0) === $ctrl.todos.length"
   ng-click="$ctrl.handleCompleteAll()"
-  />
+  />-->
 
   <footer-component ng-if="$ctrl.todos.length"
     completed-count="$ctrl.todos.reduce($ctrl.completeReducer, 0)"

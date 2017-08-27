@@ -8,5 +8,20 @@ button {
 
 td, th {
   min-width: 40px;
+  text-align: right;
+  padding-right: 15px;
+}
+
+th.table-player-name, td.table-player-name {
   text-align: left;
 }
+
+td {
+  padding-right: 20px;
+}
+
+td.table-player-name {
+  padding-left: 10px;
+  width: 20px;
+}
+

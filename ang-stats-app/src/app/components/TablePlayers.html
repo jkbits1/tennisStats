@@ -1,21 +1,27 @@
-<button ng-click="sortPlayersByRank()">Sort by Rank</button>
-<button ng-click="sortPlayersByName()">Sort by Name</button>
-<button ng-click="sortPlayersByWins()">Sort by Wins</button>
-<button ng-click="sortPlayersByParticipation()">Sort by Events</button>
-<button ng-click="sortPlayersBySetsWon()">Sort by Sets Won</button>
 <button ng-click="sortPlayersBySetsLost()">Sort by Sets Lost</button>
-<button ng-click="sortPlayersByGamesWon()">Sort by Games Won</button>
 <button ng-click="sortPlayersByGamesLost()">Sort by Games Lost</button>
 
 <table class="table table-player" ng-show="players.length">
       <thead>
         <tr>
-          <th>Rank</th>
-          <th>Name</th>
-          <th>Played</th>
-          <th>Wins</th>
-          <th>Sets</th>
-          <th>Games</th>
+          <th>
+            <button ng-click="sortPlayersByRank()">Rank</button>
+          </th>
+          <th class="table-player-name">
+            <button ng-click="sortPlayersByName()">Name</button>
+          </th>
+          <th>
+            <button ng-click="sortPlayersByParticipation()">Played</button>
+          </th>
+          <th>
+            <button ng-click="sortPlayersByWins()">Wins</button>
+            </th>
+          <th>
+            <button ng-click="sortPlayersBySetsWon()">Sets</button>
+          </th>
+          <th>
+            <button ng-click="sortPlayersByGamesWon()">Games</button>
+          </th>
         </tr>
       </thead>
     <tbody>
