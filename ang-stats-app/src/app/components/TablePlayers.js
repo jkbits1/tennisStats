@@ -37,79 +37,50 @@ function TablePlayersController ($scope) {
     return 0;
   };
 
-  $scope.sortPlayersByName = function () {
-    console.log('button clicked');
-    console.log('players count', $scope.players.length);
-
-    resetSortFlags();
-    $scope.nameSorted = true;
-
-    $scope.players.sort(sortByName);
-  };
-
-  $scope.sortPlayersByRank = function () {
-    console.log('button clicked');
-    console.log('players count', $scope.players.length);
-
-    resetSortFlags();
-    $scope.rankSorted = true;
-
-    $scope.players.sort((a, b) => {
+  const sortByRank = (a, b) => {
       return a.Rank - b.Rank;
-    });
   };
 
-  $scope.sortPlayersByWins = function () {
-    console.log('button clicked');
-    console.log('players count', $scope.players.length);
-
-    resetSortFlags();
-    $scope.winsSorted = true;
-
-    $scope.winsAsc = !$scope.winsAsc;
-
-    $scope.players.sort((a, b) => {
-      let orderValue = -1;
-
-      if ($scope.winsAsc === true) {
-        orderValue = 1;
-      }
-
-      const wonMatch = (b.Won - a.Won) * orderValue;
-
-      if (wonMatch === 0) {
-        return sortByName(a, b);
-      }
-
-      return wonMatch;
-    });
+  const sortByNameOrRank = sortFn => players => {
+    players.sort(sortFn);
   };
 
-  $scope.sortPlayersByParticipation = function () {
-    console.log('button clicked');
-    console.log('players count', $scope.players.length);
+  const sortByWins = (a, b) => {
+    let orderValue = -1;
 
-    resetSortFlags();
-    $scope.playedSorted = true;
+    if ($scope.winsAsc === true) {
+      orderValue = 1;
+    }
 
-    $scope.playedAsc = !$scope.playedAsc;
+    const wonMatch = (b.Won - a.Won) * orderValue;
 
-    $scope.players.sort((a, b) => {
-      let orderValue = -1;
+    if (wonMatch === 0) {
+      return sortByName(a, b);
+    }
 
-      if ($scope.playedAsc === true) {
-        orderValue = 1;
-      }
-
-      const playedMatch = (b.Played - a.Played) * orderValue;
-
-      if (playedMatch === 0) {
-        return sortByName(a, b);
-      }
-
-      return playedMatch;
-    });
+    return wonMatch;
   };
+
+  const sortByParticipation = (a, b) => {
+    let orderValue = -1;
+
+    if ($scope.playedAsc === true) {
+      orderValue = 1;
+    }
+
+    const playedMatch = (b.Played - a.Played) * orderValue;
+
+    if (playedMatch === 0) {
+      return sortByName(a, b);
+    }
+
+    return playedMatch;
+  };
+
+  const sortByName2 = sortByNameOrRank(sortByName);
+  const sortByRank2 = sortByNameOrRank(sortByRank);
+  const sortByWins2 = sortByNameOrRank(sortByWins);
+  const sortByParticipation2 = sortByNameOrRank(sortByParticipation);
 
   const getSetsCount = (won, player) => {
     let idx = 0;
@@ -159,10 +130,39 @@ function TablePlayersController ($scope) {
   const sortBySetsWon = (a, b) => sortBySets(true, a, b);
   const sortBySetsLost = (a, b) => sortBySets(false, a, b);
 
-  $scope.sortPlayersBySetsWon = function () {
-    console.log('button clicked');
-    console.log('players count', $scope.players.length);
+  $scope.sortPlayersByName = function () {
+    resetSortFlags();
+    $scope.nameSorted = true;
 
+    sortByName2($scope.players);
+  };
+
+  $scope.sortPlayersByRank = function () {
+    resetSortFlags();
+    $scope.rankSorted = true;
+
+    sortByRank2($scope.players);
+  };
+
+  $scope.sortPlayersByWins = function () {
+    resetSortFlags();
+    $scope.winsSorted = true;
+
+    $scope.winsAsc = !$scope.winsAsc;
+
+    sortByWins2($scope.players);
+  };
+
+  $scope.sortPlayersByParticipation = function () {
+    resetSortFlags();
+    $scope.playedSorted = true;
+
+    $scope.playedAsc = !$scope.playedAsc;
+
+    sortByParticipation2($scope.players);
+  };
+
+  $scope.sortPlayersBySetsWon = function () {
     $scope.setsWonAsc = !$scope.setsWonAsc;
 
     resetSortFlags();
@@ -172,9 +172,6 @@ function TablePlayersController ($scope) {
   };
 
   $scope.sortPlayersBySetsLost = function () {
-    console.log('button clicked');
-    console.log('players count', $scope.players.length);
-
     resetSortFlags();
     $scope.setsSorted = true;
 
@@ -231,9 +228,6 @@ function TablePlayersController ($scope) {
   const sortByGamesLost = (a, b) => sortByGames(false, a, b);
 
   $scope.sortPlayersByGamesWon = function () {
-    console.log('button clicked - games won');
-    console.log('players count', $scope.players.length);
-
     $scope.gamesWonAsc = !$scope.gamesWonAsc;
 
     resetSortFlags();
@@ -243,9 +237,6 @@ function TablePlayersController ($scope) {
   };
 
   $scope.sortPlayersByGamesLost = function () {
-    console.log('button clicked - games lost');
-    console.log('players count', $scope.players.length);
-
     resetSortFlags();
     $scope.gamesSorted = true;
 
