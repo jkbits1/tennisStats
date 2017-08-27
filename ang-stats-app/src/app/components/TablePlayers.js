@@ -67,61 +67,119 @@ function TablePlayersController ($scope) {
     });
   };
 
+  const getSetsCount = (won, player) => {
+    let idx = 0;
+
+    if (won === false) {
+      idx = 1;
+    }
+
+    const info = player.Sets.split('');
+    const filt = info.filter(s => {
+      return s !== ' ';
+    });
+    const newJoin = filt.join('');
+
+    return Number(newJoin.split('-')[idx]);
+  };
+
+  const getWonCount = player => getSetsCount(true, player);
+  const getLostCount = player => getSetsCount(false, player);
+
+  const sortBySets = (won, a, b) => {
+    let aCount = 0;
+    let bCount = 0;
+
+    if (won) {
+      aCount = getWonCount(a);
+      bCount = getWonCount(b);
+    } else {
+      aCount = getLostCount(a);
+      bCount = getLostCount(b);
+    }
+
+    const orderAB = bCount - aCount;
+
+    if (orderAB === 0) {
+      return sortByName(a, b);
+    }
+
+    return orderAB;
+  };
+
+  const sortBySetsWon = (a, b) => sortBySets(true, a, b);
+  const sortBySetsLost = (a, b) => sortBySets(false, a, b);
+
   $scope.sortPlayersBySetsWon = function () {
     console.log('button clicked');
     console.log('players count', $scope.players.length);
 
-    function getWonCount (player) {
-      const info = player.Sets.split('');
-      const filt = info.filter(s => {
-        return s !== ' ';
-      });
-      const newJoin = filt.join('');
-
-      return Number(newJoin.split('-')[0]);
-    }
-
-    $scope.players.sort((a, b) => {
-      const aWon = getWonCount(a);
-      const bWon = getWonCount(b);
-
-      const wonMatch = bWon - aWon;
-
-      if (wonMatch === 0) {
-        return sortByName(a, b);
-      }
-
-      return wonMatch;
-    });
+    $scope.players.sort(sortBySetsWon);
   };
 
-  $scope.sortPlayersByGamesWon = function () {
+  $scope.sortPlayersBySetsLost = function () {
     console.log('button clicked');
     console.log('players count', $scope.players.length);
 
-    function getGamesCount (player) {
-      const info = player.Games.split('');
-      const filt = info.filter(s => {
-        return s !== ' ';
-      });
+    $scope.players.sort(sortBySetsLost);
+  };
 
-      const newJoin = filt.join('');
+  const getGamesCount = (won, player) => {
+    let idx = 0;
 
-      return Number(newJoin.split('-')[0]);
+    if (won === false) {
+      idx = 1;
     }
 
-    $scope.players.sort((a, b) => {
-      const aGames = getGamesCount(a);
-      const bGames = getGamesCount(b);
-
-      const gamesMatch = bGames - aGames;
-
-      if (gamesMatch === 0) {
-        return sortByName(a, b);
-      }
-
-      return gamesMatch;
+    const info = player.Games.split('');
+    const filt = info.filter(s => {
+      return s !== ' ';
     });
+
+    const newJoin = filt.join('');
+
+    return Number(newJoin.split('-')[idx]);
+  };
+
+  const getGamesWon = player => getGamesCount(true, player);
+  const getGamesLost = player => getGamesCount(false, player);
+
+  const sortByGames = (won, a, b) => {
+    let aGames = 0;
+    let bGames = 0;
+
+    if (won === true) {
+      aGames = getGamesWon(a);
+      bGames = getGamesWon(b);
+    } else {
+      aGames = getGamesLost(a);
+      bGames = getGamesLost(b);
+    }
+
+    const gamesMatch = bGames - aGames;
+
+    if (gamesMatch === 0) {
+      return sortByName(a, b);
+    }
+
+    return gamesMatch;
+  };
+
+  const sortByGamesWon = (a, b) => sortByGames(true, a, b);
+  const sortByGamesLost = (a, b) => sortByGames(false, a, b);
+
+  $scope.sortPlayersByGamesWon = function () {
+    console.log('button clicked - games won');
+    console.log('players count', $scope.players.length);
+
+    $scope.players.sort(sortByGamesWon);
+  };
+
+  $scope.sortPlayersByGamesLost = function () {
+    console.log('button clicked - games lost');
+    console.log('players count', $scope.players.length);
+
+    $scope.players.sort(sortByGamesLost);
   };
 }
 
