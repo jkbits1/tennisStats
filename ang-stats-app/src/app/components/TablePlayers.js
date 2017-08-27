@@ -13,6 +13,17 @@ function TablePlayersController ($scope) {
   $scope.setsWonAsc = false;
   $scope.gamesWonAsc = false;
 
+  const resetSortFlags = () => {
+    $scope.rankSorted = false;
+    $scope.nameSorted = false;
+    $scope.winsSorted = false;
+    $scope.gamesSorted = false;
+    $scope.setsSorted = false;
+    $scope.playedSorted = false;
+  };
+
+  resetSortFlags();
+
   const sortByName = (a, b) => {
     const nameA = a.Name.toUpperCase(); // ignore upper and lowercase
     const nameB = b.Name.toUpperCase(); // ignore upper and lowercase
@@ -30,12 +41,18 @@ function TablePlayersController ($scope) {
     console.log('button clicked');
     console.log('players count', $scope.players.length);
 
+    resetSortFlags();
+    $scope.nameSorted = true;
+
     $scope.players.sort(sortByName);
   };
 
   $scope.sortPlayersByRank = function () {
     console.log('button clicked');
     console.log('players count', $scope.players.length);
+
+    resetSortFlags();
+    $scope.rankSorted = true;
 
     $scope.players.sort((a, b) => {
       return a.Rank - b.Rank;
@@ -45,6 +62,9 @@ function TablePlayersController ($scope) {
   $scope.sortPlayersByWins = function () {
     console.log('button clicked');
     console.log('players count', $scope.players.length);
+
+    resetSortFlags();
+    $scope.winsSorted = true;
 
     $scope.winsAsc = !$scope.winsAsc;
 
@@ -68,6 +88,9 @@ function TablePlayersController ($scope) {
   $scope.sortPlayersByParticipation = function () {
     console.log('button clicked');
     console.log('players count', $scope.players.length);
+
+    resetSortFlags();
+    $scope.playedSorted = true;
 
     $scope.playedAsc = !$scope.playedAsc;
 
@@ -142,12 +165,18 @@ function TablePlayersController ($scope) {
 
     $scope.setsWonAsc = !$scope.setsWonAsc;
 
+    resetSortFlags();
+    $scope.setsSorted = true;
+
     $scope.players.sort(sortBySetsWon);
   };
 
   $scope.sortPlayersBySetsLost = function () {
     console.log('button clicked');
     console.log('players count', $scope.players.length);
+
+    resetSortFlags();
+    $scope.setsSorted = true;
 
     $scope.players.sort(sortBySetsLost);
   };
@@ -207,12 +236,18 @@ function TablePlayersController ($scope) {
 
     $scope.gamesWonAsc = !$scope.gamesWonAsc;
 
+    resetSortFlags();
+    $scope.gamesSorted = true;
+
     $scope.players.sort(sortByGamesWon);
   };
 
   $scope.sortPlayersByGamesLost = function () {
     console.log('button clicked - games lost');
     console.log('players count', $scope.players.length);
+
+    resetSortFlags();
+    $scope.gamesSorted = true;
 
     $scope.players.sort(sortByGamesLost);
   };
