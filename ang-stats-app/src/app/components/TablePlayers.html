@@ -5,26 +5,26 @@
   <thead>
     <tr>
       <th>
-        <button ng-click="sortPlayersByRank()" ng-class="{'button-order': rankSorted}">
+        <button ng-click="sortPlayersByRank()" ng-class="{'button-order': sorted[RANK_IDX]}">
           Rank
         </button>
       </th>
       <th class="table-player-name" >
-        <button ng-click="sortPlayersByName()" ng-class="{'button-order': nameSorted}">
+        <button ng-click="sortPlayersByName()" ng-class="{'button-order': sorted[NAME_IDX]}">
           Name
         </button>
       </th>
       <th>
-        <button ng-click="sortPlayersByParticipation()" ng-class="{'button-order': playedSorted}">Played</button>
+        <button ng-click="sortPlayersByParticipation()" ng-class="{'button-order': sorted[PART_IDX]}">Played</button>
       </th>
       <th>
-        <button ng-click="sortPlayersByWins()" ng-class="{'button-order': winsSorted}">Wins</button>
+        <button ng-click="sortPlayersByWins()" ng-class="{'button-order': sorted[WINS_IDX]}">Wins</button>
         </th>
       <th>
-        <button ng-click="sortPlayersBySetsWon()" ng-class="{'button-order': setsSorted}">Sets</button>
+        <button ng-click="sortPlayersBySetsWon()" ng-class="{'button-order': sorted[SETS_IDX]}">Sets</button>
       </th>
       <th>
-        <button ng-click="sortPlayersByGamesWon()" ng-class="{'button-order': gamesSorted}">Games</button>
+        <button ng-click="sortPlayersByGamesWon()" ng-class="{'button-order': sorted[GAME_IDX]}">Games</button>
       </th>
     </tr>
   </thead>

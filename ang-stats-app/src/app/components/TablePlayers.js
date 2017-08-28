@@ -8,21 +8,37 @@
 function TablePlayersController ($scope) {
   console.log('table player scope', $scope);
 
-  $scope.playedAsc = false;
-  $scope.winsAsc = false;
-  $scope.setsWonAsc = false;
-  $scope.gamesWonAsc = false;
+// convert to symbols
+  $scope.RANK_IDX = 0;
+  $scope.NAME_IDX = 1;
+  $scope.WINS_IDX = 2;
+  $scope.GAME_IDX = 3;
+  $scope.PART_IDX = 4;
+  $scope.SETS_IDX = 5;
 
-  const resetSortFlags = () => {
-    $scope.rankSorted = false;
-    $scope.nameSorted = false;
-    $scope.winsSorted = false;
-    $scope.gamesSorted = false;
-    $scope.setsSorted = false;
-    $scope.playedSorted = false;
+  $scope.sorted = [false, false, false, false, false, false];
+  $scope.ascend = [false, false, false, false, false, false];
+
+  // $scope.playedAsc = false;
+  // $scope.winsAsc = false;
+  // $scope.setsWonAsc = false;
+  // $scope.gamesWonAsc = false;
+
+  const resetFlags = curIdx => {
+    $scope.sorted = $scope.sorted.map(() => {
+      return false;
+    });
+
+    $scope.ascend = $scope.ascend.map((val, idx) => {
+      if (curIdx === idx) {
+        return val;
+      }
+
+      return false;
+    });
   };
 
-  resetSortFlags();
+  resetFlags(100);
 
   const sortByName = (a, b) => {
     const nameA = a.Name.toUpperCase(); // ignore upper and lowercase
@@ -41,14 +57,10 @@ function TablePlayersController ($scope) {
       return a.Rank - b.Rank;
   };
 
-  const sortByNameOrRank = sortFn => players => {
-    players.sort(sortFn);
-  };
-
   const sortByWins = (a, b) => {
     let orderValue = -1;
 
-    if ($scope.winsAsc === true) {
+    if ($scope.ascend[$scope.WINS_IDX] === true) {
       orderValue = 1;
     }
 
@@ -64,7 +76,7 @@ function TablePlayersController ($scope) {
   const sortByParticipation = (a, b) => {
     let orderValue = -1;
 
-    if ($scope.playedAsc === true) {
+    if ($scope.ascend[$scope.PART_IDX] === true) {
       orderValue = 1;
     }
 
@@ -76,11 +88,6 @@ function TablePlayersController ($scope) {
 
     return playedMatch;
   };
-
-  const sortByName2 = sortByNameOrRank(sortByName);
-  const sortByRank2 = sortByNameOrRank(sortByRank);
-  const sortByWins2 = sortByNameOrRank(sortByWins);
-  const sortByParticipation2 = sortByNameOrRank(sortByParticipation);
 
   const getSetsCount = (won, player) => {
     let idx = 0;
@@ -106,7 +113,7 @@ function TablePlayersController ($scope) {
     let bCount = 0;
 
     if (won) {
-      if ($scope.setsWonAsc) {
+      if ($scope.ascend[$scope.SETS_IDX]) {
         aCount = getWonCount(a);
         bCount = getWonCount(b);
       } else {
@@ -129,54 +136,6 @@ function TablePlayersController ($scope) {
 
   const sortBySetsWon = (a, b) => sortBySets(true, a, b);
   const sortBySetsLost = (a, b) => sortBySets(false, a, b);
-
-  $scope.sortPlayersByName = function () {
-    resetSortFlags();
-    $scope.nameSorted = true;
-
-    sortByName2($scope.players);
-  };
-
-  $scope.sortPlayersByRank = function () {
-    resetSortFlags();
-    $scope.rankSorted = true;
-
-    sortByRank2($scope.players);
-  };
-
-  $scope.sortPlayersByWins = function () {
-    resetSortFlags();
-    $scope.winsSorted = true;
-
-    $scope.winsAsc = !$scope.winsAsc;
-
-    sortByWins2($scope.players);
-  };
-
-  $scope.sortPlayersByParticipation = function () {
-    resetSortFlags();
-    $scope.playedSorted = true;
-
-    $scope.playedAsc = !$scope.playedAsc;
-
-    sortByParticipation2($scope.players);
-  };
-
-  $scope.sortPlayersBySetsWon = function () {
-    $scope.setsWonAsc = !$scope.setsWonAsc;
-
-    resetSortFlags();
-    $scope.setsSorted = true;
-
-    $scope.players.sort(sortBySetsWon);
-  };
-
-  $scope.sortPlayersBySetsLost = function () {
-    resetSortFlags();
-    $scope.setsSorted = true;
-
-    $scope.players.sort(sortBySetsLost);
-  };
 
   const getGamesCount = (won, player) => {
     let idx = 0;
@@ -203,7 +162,7 @@ function TablePlayersController ($scope) {
     let bGames = 0;
 
     if (won === true) {
-      if ($scope.gamesWonAsc === true) {
+      if ($scope.ascend[$scope.GAME_IDX] === true) {
         aGames = getGamesWon(a);
         bGames = getGamesWon(b);
       } else {
@@ -227,19 +186,51 @@ function TablePlayersController ($scope) {
   const sortByGamesWon = (a, b) => sortByGames(true, a, b);
   const sortByGamesLost = (a, b) => sortByGames(false, a, b);
 
-  $scope.sortPlayersByGamesWon = function () {
-    $scope.gamesWonAsc = !$scope.gamesWonAsc;
+  const sortByFunction = (sortFn, sortIdx) => () => {
+    resetFlags(sortIdx);
 
-    resetSortFlags();
-    $scope.gamesSorted = true;
+    $scope.sorted[sortIdx] = true;
+    $scope.ascend[sortIdx] = !$scope.ascend[sortIdx];
 
-    $scope.players.sort(sortByGamesWon);
+    $scope.players.sort(sortFn);
+  };
+
+  $scope.sortPlayersByName = sortByFunction(sortByName, $scope.NAME_IDX);
+  $scope.sortPlayersByRank = sortByFunction(sortByRank, $scope.RANK_IDX);
+  $scope.sortPlayersByWins = sortByFunction(sortByWins, $scope.WINS_IDX);
+  $scope.sortPlayersByParticipation = sortByFunction(sortByParticipation, $scope.PART_IDX);
+  $scope.sortPlayersBySetsWon = sortByFunction(sortBySetsWon, $scope.SETS_IDX);
+  $scope.sortPlayersByGamesWon = sortByFunction(sortByGamesWon, $scope.GAME_IDX);
+
+  // $scope.sortPlayersByName = function () {
+  //   sortByName2();
+  // };
+
+  // $scope.sortPlayersByRank = function () {
+  //   sortByRank2();
+  // };
+
+  // $scope.sortPlayersByWins = function () {
+  //   sortByWins2();
+  // };
+
+  // $scope.sortPlayersByParticipation = function () {
+  //   sortByParticipation2($scope.players);
+  // };
+
+  // $scope.sortPlayersBySetsWon = function () {
+  //   sortBySetsWon2($scope.players);
+  // };
+
+  // $scope.sortPlayersByGamesWon = function () {
+  //   sortByGamesWon2($scope.players);
+  // };
+
+  $scope.sortPlayersBySetsLost = function () {
+    $scope.players.sort(sortBySetsLost);
   };
 
   $scope.sortPlayersByGamesLost = function () {
-    resetSortFlags();
-    $scope.gamesSorted = true;
-
     $scope.players.sort(sortByGamesLost);
   };
 }
