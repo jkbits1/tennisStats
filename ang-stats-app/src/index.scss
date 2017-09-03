@@ -4,12 +4,20 @@ button {
 
   margin-left: 4px;
   border-style: dashed;
+
+  height: 48px;
 }
 
-td, th {
+/*td, th {
   min-width: 40px;
   text-align: right;
   padding-right: 15px;
+}*/
+
+td {
+  min-width: 40px;
+  text-align: right;
+  // padding-right: 15px;
 }
 
 th.table-player-name, td.table-player-name {
@@ -17,7 +25,7 @@ th.table-player-name, td.table-player-name {
 }
 
 td {
-  padding-right: 20px;
+  // padding-right: 20px;
 }
 
 td.table-player-name {
@@ -27,4 +35,16 @@ td.table-player-name {
 
 .button-order {
   background-color: aquamarine;
+}
+
+.colGamesWon {
+  min-width: 20px;
+}
+
+.colNumbers {
+  padding-right: 8px;
+}
+
+p {
+  margin-left: 8px;
 }

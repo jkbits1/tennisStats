@@ -21,7 +21,60 @@ function TableRowsES5Controller ($scope, $http, $sce) {
       // console.log('trusted', trustedUrl);
       console.log('data', data);
 
-      $scope.players = data.data;
+      const getSetsCount = (won, player) => {
+        let idx = 0;
+
+        if (won === false) {
+          idx = 1;
+        }
+
+        const info = player.Sets.split('');
+        const filt = info.filter(s => {
+          return s !== ' ';
+        });
+        const newJoin = filt.join('');
+
+        return Number(newJoin.split('-')[idx]);
+      };
+
+      const getGamesCount = (won, player) => {
+        let idx = 0;
+
+        if (won === false) {
+          idx = 1;
+        }
+
+        const info = player.Games.split('');
+        const filt = info.filter(s => {
+          return s !== ' ';
+        });
+
+        const newJoin = filt.join('');
+
+        return Number(newJoin.split('-')[idx]);
+      };
+
+      const getWonCount = player => getSetsCount(true, player);
+      const getLostCount = player => getSetsCount(false, player);
+
+      const getGamesWon = player => getGamesCount(true, player);
+      const getGamesLost = player => getGamesCount(false, player);
+
+      const rawPlayerInfo = data.data;
+
+      const processedPI = rawPlayerInfo.map(player => {
+        const playerProcessed = Object.assign({}, player);
+
+        playerProcessed.SetsWon = getWonCount(player);
+        playerProcessed.SetsLost = getLostCount(player);
+
+        playerProcessed.GamesWon = getGamesWon(player);
+        playerProcessed.GamesLost = getGamesLost(player);
+
+        return playerProcessed;
+      });
+
+      $scope.players = processedPI;
     }, errResp => {
       // console.log('trusted', trustedUrl.unwrapTrustedValue());
       console.log('error', errResp);

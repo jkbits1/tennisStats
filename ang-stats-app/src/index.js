@@ -6,13 +6,13 @@ import 'todomvc-app-css/index.css';
 import {TodoService} from './app/todos/todos';
 import {PlayerService} from './app/players/players';
 import {App} from './app/containers/App';
-import {Header} from './app/components/Header';
+// import {Header} from './app/components/Header';
 import {MainSection} from './app/components/MainSection';
-import {TodoTextInput} from './app/components/TodoTextInput';
-import {TodoItem} from './app/components/TodoItem';
-import {Team} from './app/components/Team';
-import {PlayerItem} from './app/components/PlayerItem';
-import {Footer} from './app/components/Footer';
+// import {TodoTextInput} from './app/components/TodoTextInput';
+// import {TodoItem} from './app/components/TodoItem';
+// import {Team} from './app/components/Team';
+// import {PlayerItem} from './app/components/PlayerItem';
+// import {Footer} from './app/components/Footer';
 
 // import {TableRows} from './app/components/TableRows';
 import {TableRowsFiveCtrl} from './app/components/TableRowsES5';
@@ -30,13 +30,13 @@ angular
   .service('todoService', TodoService)
   .service('playerService', PlayerService)
   .component('app', App)
-  .component('headerComponent', Header)
-  .component('footerComponent', Footer)
+  // .component('headerComponent', Header)
+  // .component('footerComponent', Footer)
   .component('mainSection', MainSection)
-  .component('teamComponent', Team)
-  .component('playerItem', PlayerItem)
-  .component('todoTextInput', TodoTextInput)
-  .component('todoItem', TodoItem)
+  // .component('teamComponent', Team)
+  // .component('playerItem', PlayerItem)
+  // .component('todoTextInput', TodoTextInput)
+  // .component('todoItem', TodoItem)
   // .controller('tableRowsController', TableRows)
   .controller('tableRowsFiveController', TableRowsFiveCtrl)
   .directive('tablePlayers', TablePlayers)
