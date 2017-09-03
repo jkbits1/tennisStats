@@ -37,18 +37,18 @@ function TablePlayersController ($scope) {
 
   resetFlags(100);
 
-  // const sortByName2 = (a, b) => {
-  //   const nameA = a.Name.toUpperCase(); // ignore upper and lowercase
-  //   const nameB = b.Name.toUpperCase(); // ignore upper and lowercase
-  //   if (nameA < nameB) {
-  //     return -1;
-  //   }
-  //   if (nameA > nameB) {
-  //     return 1;
-  //   }
+  const sortByNameAsc = (a, b) => {
+    const nameA = a.Name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.Name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
 
-  //   return 0;
-  // };
+    return 0;
+  };
 
   const sortByGeneric = (fn, idx) => (a, b) => {
     let orderValue = -1;
@@ -60,7 +60,7 @@ function TablePlayersController ($scope) {
     const playedMatch = (fn(a, b)) * orderValue;
 
     if (playedMatch === 0) {
-      return sortByName(a, b);
+      return sortByNameAsc(a, b);
     }
 
     return playedMatch;
@@ -160,7 +160,7 @@ function TablePlayersController ($scope) {
     const orderAB = playerB - playerA;
 
     if (orderAB === 0) {
-      return sortByName(a, b);
+      return sortByNameAsc(a, b);
     }
 
     return orderAB;
