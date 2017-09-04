@@ -10,14 +10,19 @@ const casper = require('casper').create({
     waitTimeout: 5000
 });
 
-const teamUrl = 'http://lta.tournamentsoftware.com/sport/teamplayerstats.aspx?id=AE26B6DB-ED63-4277-B089-ADFF66DB4ECA&team=119';
+// barnet 5
+// const teamUrl = 'http://lta.tournamentsoftware.com/sport/teamplayerstats.aspx?id=AE26B6DB-ED63-4277-B089-ADFF66DB4ECA&team=119';
+
+// barnet 3
+const teamUrl = 'http://lta.tournamentsoftware.com/sport/teamplayerstats.aspx?id=AE26B6DB-ED63-4277-B089-ADFF66DB4ECA&team=116';
 
 const playerRowSelector   = 'table.ruler tr';
 const playerCellSelector  = 'table.ruler tr td';
 
 const playerColumnCount = 6;
 
-const playerFileName = 'players.txt';
+// const playerFileName = 'players.txt';
+const playerFileName = 'players3.txt';
 
 var searchResultPlayers = [];
 var players = [];

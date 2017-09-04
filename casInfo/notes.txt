@@ -1,5 +1,33 @@
+(prev note
 Phantomjs binary available at /usr/src/app/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs
+)
 
+in a new docker machine, these steps work
+
+1) npm install phantomjs
+
+NOTE:
+install mentions location of phantomjs binary
+(use full path in steps below)
+
+check installed with :
+node_modules/phantomjs/lib/phantom/bin/phantomjs --version
+
+maybe here too?
 node_modules/.bin/phantomjs --version
 
+2) create ph sysmlink as described here:
+https://gist.github.com/julionc/7476620
 
+ln -sf (full path to phantomjs binary as explained above) /usr/local/bin
+
+3) npm install -g casperjs
+
+test with:
+casperjs
+
+4) in casStats.js, change url, output textfile as appropriate
+
+casperjs casStats.js
+
+output file exists
