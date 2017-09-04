@@ -1,26 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-// const Datastore = require('nedb');
-
-// const db = new Datastore({
-//     filename:
-//       '/usr/src/app/node_modules/players.db'
-//   , autoload: true
-// });
-
 var db = undefined;
 
-// db.loadDatabase(err => {
-//   if (err) {
-//     console.log("players db err");
+// GET teams
+router.get('/:id', function(req, res, next) {
 
-//     throw err;
-//   }
-// });
+  const teamId = req.params.id;
 
-// GET players
-router.get('/', function(req, res, next) {
+  console.log("team id", teamId);
 
   if (db === undefined || db === null) {
     res.send('no db');
@@ -28,7 +16,7 @@ router.get('/', function(req, res, next) {
     return;
   }
   
-  db.find({ team: 5 }, (err, teams) => {
+  db.find({ team: teamId.toString() }, (err, teams) => {
     if (err) {
       res.send('db error');
 
@@ -38,6 +26,8 @@ router.get('/', function(req, res, next) {
     if (teams.length === 0) {
       res.send("no info found");
     }
+
+    console.log("teams", teams);
 
     const team = teams[0];
 
