@@ -9,15 +9,18 @@ function TableRowsES5Controller ($scope, $http, $sce) {
           {Rank: '12', Name: 'xxJohn Trotter', Won: '0', Played: '3', Sets: '1 - 3', Games: '10 - 22'}
         ]);
 
-    const url = 'http://localhost:8080/players';
-    const url2 = 'http://localhost:8080/players?callback=JSON_CALLBACK';
+    const url = 'http://localhost:8080/teams/';
+    // const url2 = 'http://localhost:8080/players?callback=JSON_CALLBACK';
 
-    const trustedUrl = $sce.trustAsResourceUrl(url);
-    const trustedUrl2 = $sce.trustAsResourceUrl(url2);
+    // const trustedUrl = $sce.trustAsResourceUrl(url);
+    // const trustedUrl2 = $sce.trustAsResourceUrl(url2);
 
-    $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'})
-    // $http.jsonp(url2)
-    .then(data => {
+    const handleHttpError = errResp => {
+      // console.log('trusted', trustedUrl.unwrapTrustedValue());
+      console.log('error', errResp);
+    };
+
+    const getPlayerData = players => data => {
       // console.log('trusted', trustedUrl);
       console.log('data', data);
 
@@ -74,11 +77,31 @@ function TableRowsES5Controller ($scope, $http, $sce) {
         return playerProcessed;
       });
 
-      $scope.players = processedPI;
-    }, errResp => {
-      // console.log('trusted', trustedUrl.unwrapTrustedValue());
-      console.log('error', errResp);
+      console.log('scope players', players);
+
+      // $scope.players = processedPI;
+      $scope[players] = processedPI;
+    };
+
+    const teamIds = [5, 3];
+
+    // const trustedUrls = [
+    //   $sce.trustAsResourceUrl(url + 5)
+    // , $sce.trustAsResourceUrl(url + 3)
+    // ];
+
+    const getPlayerDatas = [
+      getPlayerData('players')
+    , getPlayerData('players3')
+    ];
+
+    $scope.teamname = 'Barnet V';
+
+    teamIds.forEach((teamId, idx) => {
+      $http.jsonp($sce.trustAsResourceUrl(url + teamId), {jsonpCallbackParam: 'callback'})
+      .then(getPlayerDatas[idx], handleHttpError);
     });
+
 };
 
 TableRowsES5Controller.$inject = ['$scope', '$http', '$sce'];

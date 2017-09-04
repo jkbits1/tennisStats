@@ -6,16 +6,11 @@ import angular from 'angular';
 import {TodoService} from './app/todos/todos';
 import {PlayerService} from './app/players/players';
 import {App} from './app/containers/App';
-// import {Header} from './app/components/Header';
 import {MainSection} from './app/components/MainSection';
-// import {TodoTextInput} from './app/components/TodoTextInput';
-// import {TodoItem} from './app/components/TodoItem';
-// import {Team} from './app/components/Team';
-// import {PlayerItem} from './app/components/PlayerItem';
-// import {Footer} from './app/components/Footer';
 
 // import {TableRows} from './app/components/TableRows';
 import {TableRowsFiveCtrl} from './app/components/TableRowsES5';
+import {TableRowsComponent} from './app/components/TableRowsComponent';
 import {TablePlayers} from './app/components/TablePlayers';
 import {RowPlayer} from './app/components/RowPlayer';
 
@@ -39,6 +34,7 @@ angular
   // .component('todoItem', TodoItem)
   // .controller('tableRowsController', TableRows)
   .controller('tableRowsFiveController', TableRowsFiveCtrl)
+  .component('tableRowsComponent', TableRowsComponent)
   .directive('tablePlayers', TablePlayers)
   // .component('tablePlayers', TablePlayers)
   .directive('rowPlayer', RowPlayer);

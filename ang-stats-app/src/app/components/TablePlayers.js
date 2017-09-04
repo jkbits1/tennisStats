@@ -228,6 +228,8 @@ function TablePlayersController ($scope) {
 
       $scope.ascend[0] = false;
 
+      // $scope.teamname = '132';
+
       $scope.sortPlayersByRank();
     }
   },
@@ -243,7 +245,8 @@ function TablePlayersDirective () {
         restrict: 'E',
         templateUrl: './app/components/TablePlayers.html',
         scope: {
-            players: '<'
+            players: '<',
+            teamname: '<'
         },
         controller: TablePlayersController,
         link: function(scope, element) {
