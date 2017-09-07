@@ -2,13 +2,13 @@
 
 class TableRowsComponentController {
   /** @ngInject */
-  constructor ($scope, $http, $sce) {
-    $scope.players =
-      angular.fromJson(
-        [{Rank: '10', Name: 'xxJohn Kelly', Won: '1', Played: '9', Sets: '2 - 9', Games: '31 - 67'},
-          {Rank: '11', Name: 'xxMike Milfull', Won: '1', Played: '9', Sets: '2 - 10', Games: '40 - 65'},
-          {Rank: '12', Name: 'xxJohn Trotter', Won: '0', Played: '3', Sets: '1 - 3', Games: '10 - 22'}
-        ]);
+  constructor ($http, $sce) {
+    // $scope.players =
+    //   angular.fromJson(
+    //     [{Rank: '10', Name: 'xxJohn Kelly', Won: '1', Played: '9', Sets: '2 - 9', Games: '31 - 67'},
+    //       {Rank: '11', Name: 'xxMike Milfull', Won: '1', Played: '9', Sets: '2 - 10', Games: '40 - 65'},
+    //       {Rank: '12', Name: 'xxJohn Trotter', Won: '0', Played: '3', Sets: '1 - 3', Games: '10 - 22'}
+    //     ]);
 
     const url = 'http://localhost:8080/teams/';
     // const url2 = 'http://localhost:8080/players?callback=JSON_CALLBACK';
@@ -81,7 +81,8 @@ class TableRowsComponentController {
       console.log('scope players', players);
 
       // $scope.players = processedPI;
-      $scope[players] = processedPI;
+      // $scope[players] = processedPI;
+      this[players] = processedPI;
     };
 
     const teamIds = [5, 3];
@@ -96,7 +97,8 @@ class TableRowsComponentController {
     , getPlayerData('players3')
     ];
 
-    $scope.teamname = 'Barnet III';
+    // $scope.teamname = 'Barnet III';
+    this.teamname = 'Barnet III';
 
     teamIds.forEach((teamId, idx) => {
       $http.jsonp($sce.trustAsResourceUrl(url + teamId), {jsonpCallbackParam: 'callback'})
@@ -105,7 +107,7 @@ class TableRowsComponentController {
   }
 }
 
-TableRowsComponentController.$inject = ['$scope', '$http', '$sce'];
+TableRowsComponentController.$inject = ['$http', '$sce'];
 
 export const TableRowsComponent = {
   template: require('./TableRowsComponent.html'),

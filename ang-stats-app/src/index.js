@@ -14,6 +14,8 @@ import {TableRowsComponent} from './app/components/TableRowsComponent';
 import {TablePlayers} from './app/components/TablePlayers';
 import {RowPlayer} from './app/components/RowPlayer';
 
+import {HttpPlayersService} from './app/components/HttpPlayersService';
+
 import 'angular-ui-router';
 import routesConfig from './routes';
 
@@ -24,6 +26,7 @@ angular
   .config(routesConfig)
   .service('todoService', TodoService)
   .service('playerService', PlayerService)
+  .service('httpPlayersService', HttpPlayersService)
   .component('app', App)
   // .component('headerComponent', Header)
   // .component('footerComponent', Footer)

@@ -12,12 +12,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     });
 
   $stateProvider
-    .state('team5', {
-      url: '/team5',
-      component: 'app'
-    });
-
-  $stateProvider
     .state('teams', {
       url: '/teams',
       template: `<h1>teams</h1>
@@ -32,5 +26,11 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/team3',
       // template: '<h1>hi there</h1>'
       component: 'tableRowsComponent'
+    });
+
+  $stateProvider
+    .state('team5', {
+      url: '/team5',
+      component: 'app'
     });
 }

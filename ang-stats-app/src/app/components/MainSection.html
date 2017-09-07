@@ -1,6 +1,6 @@
 <section class="main">
-  <div ng-controller="tableRowsFiveController">
-    <table-players players="players" teamname="teamname"></table-players>
+  <div ng-controller="tableRowsFiveController as $ctrl">
+    <table-players players="$ctrl.players" teamname="$ctrl.teamname"></table-players>
   </div>
   <!--<table>
     <tr ng-repeat="todo in $ctrl.todos">

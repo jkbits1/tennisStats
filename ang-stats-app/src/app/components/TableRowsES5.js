@@ -1,8 +1,8 @@
 /* eslint comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0, no-extra-semi: 0, space-before-function-paren: 0, padded-blocks: 0 */
 
-function TableRowsES5Controller ($scope, $http, $sce) {
+function TableRowsES5Controller ($http, $sce) {
 
-    $scope.players =
+    this.players =
       angular.fromJson(
         [{Rank: '10', Name: 'xxJohn Kelly', Won: '1', Played: '9', Sets: '2 - 9', Games: '31 - 67'},
           {Rank: '11', Name: 'xxMike Milfull', Won: '1', Played: '9', Sets: '2 - 10', Games: '40 - 65'},
@@ -80,7 +80,8 @@ function TableRowsES5Controller ($scope, $http, $sce) {
       console.log('scope players', players);
 
       // $scope.players = processedPI;
-      $scope[players] = processedPI;
+      // $scope[players] = processedPI;
+      this[players] = processedPI;
     };
 
     const teamIds = [5, 3];
@@ -95,7 +96,8 @@ function TableRowsES5Controller ($scope, $http, $sce) {
     , getPlayerData('players3')
     ];
 
-    $scope.teamname = 'Barnet V';
+    // $scope.teamname = 'Barnet V';
+    this.teamname = 'Barnet V';
 
     teamIds.forEach((teamId, idx) => {
       $http.jsonp($sce.trustAsResourceUrl(url + teamId), {jsonpCallbackParam: 'callback'})
@@ -104,6 +106,6 @@ function TableRowsES5Controller ($scope, $http, $sce) {
 
 };
 
-TableRowsES5Controller.$inject = ['$scope', '$http', '$sce'];
+TableRowsES5Controller.$inject = ['$http', '$sce'];
 
 export const TableRowsFiveCtrl = TableRowsES5Controller;
