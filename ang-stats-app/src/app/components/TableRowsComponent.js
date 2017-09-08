@@ -21,7 +21,7 @@ class TableRowsComponentController {
 
     teamIds.forEach((teamId, idx) => {
       // $http.jsonp($sce.trustAsResourceUrl(url + teamId), {jsonpCallbackParam: 'callback'})
-      httpPlayersService.getPlayerData(teamId)
+      httpPlayersService.getPlayers(teamId)
       .then(getPlayerDatas[idx], handleHttpError);
     });
   }
