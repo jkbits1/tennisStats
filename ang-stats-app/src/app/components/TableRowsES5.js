@@ -1,6 +1,7 @@
 /* eslint comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0, no-extra-semi: 0, space-before-function-paren: 0, padded-blocks: 0 */
 
-function TableRowsES5Controller ($http, $sce) {
+function TableRowsES5Controller (httpPlayersService) {
+  console.log('http players svc', httpPlayersService);
 
     this.players =
       angular.fromJson(
@@ -9,103 +10,27 @@ function TableRowsES5Controller ($http, $sce) {
           {Rank: '12', Name: 'xxJohn Trotter', Won: '0', Played: '3', Sets: '1 - 3', Games: '10 - 22'}
         ]);
 
-    const url = 'http://localhost:8080/teams/';
-    // const url2 = 'http://localhost:8080/players?callback=JSON_CALLBACK';
-
-    // const trustedUrl = $sce.trustAsResourceUrl(url);
-    // const trustedUrl2 = $sce.trustAsResourceUrl(url2);
-
     const handleHttpError = errResp => {
       // console.log('trusted', trustedUrl.unwrapTrustedValue());
       console.log('error', errResp);
     };
 
-    const getPlayerData = players => data => {
-      // console.log('trusted', trustedUrl);
-      console.log('data', data);
-
-      const getSetsCount = (won, player) => {
-        let idx = 0;
-
-        if (won === false) {
-          idx = 1;
-        }
-
-        const info = player.Sets.split('');
-        const filt = info.filter(s => {
-          return s !== ' ';
-        });
-        const newJoin = filt.join('');
-
-        return Number(newJoin.split('-')[idx]);
-      };
-
-      const getGamesCount = (won, player) => {
-        let idx = 0;
-
-        if (won === false) {
-          idx = 1;
-        }
-
-        const info = player.Games.split('');
-        const filt = info.filter(s => {
-          return s !== ' ';
-        });
-
-        const newJoin = filt.join('');
-
-        return Number(newJoin.split('-')[idx]);
-      };
-
-      const getWonCount = player => getSetsCount(true, player);
-      const getLostCount = player => getSetsCount(false, player);
-
-      const getGamesWon = player => getGamesCount(true, player);
-      const getGamesLost = player => getGamesCount(false, player);
-
-      const rawPlayerInfo = data.data;
-
-      const processedPI = rawPlayerInfo.map(player => {
-        const playerProcessed = Object.assign({}, player);
-
-        playerProcessed.SetsWon = getWonCount(player);
-        playerProcessed.SetsLost = getLostCount(player);
-
-        playerProcessed.GamesWon = getGamesWon(player);
-        playerProcessed.GamesLost = getGamesLost(player);
-
-        return playerProcessed;
-      });
-
-      console.log('scope players', players);
-
-      // $scope.players = processedPI;
-      // $scope[players] = processedPI;
-      this[players] = processedPI;
-    };
-
     const teamIds = [5, 3];
 
-    // const trustedUrls = [
-    //   $sce.trustAsResourceUrl(url + 5)
-    // , $sce.trustAsResourceUrl(url + 3)
-    // ];
-
     const getPlayerDatas = [
-      getPlayerData('players')
-    , getPlayerData('players3')
+      httpPlayersService.getPlayerData('players', this)
+    , httpPlayersService.getPlayerData('players3', this)
     ];
 
     // $scope.teamname = 'Barnet V';
     this.teamname = 'Barnet V';
 
     teamIds.forEach((teamId, idx) => {
-      $http.jsonp($sce.trustAsResourceUrl(url + teamId), {jsonpCallbackParam: 'callback'})
+      httpPlayersService.getPlayers(teamId)
       .then(getPlayerDatas[idx], handleHttpError);
     });
-
 };
 
-TableRowsES5Controller.$inject = ['$http', '$sce'];
+TableRowsES5Controller.$inject = ['httpPlayersService'];
 
 export const TableRowsFiveCtrl = TableRowsES5Controller;
