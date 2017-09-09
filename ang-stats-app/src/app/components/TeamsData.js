@@ -11,13 +11,12 @@ class TeamsDataController extends PlayersListsCtrl {
 
     this.httpPlayersService = httpPlayersService;
 
+    this.teamname3 = 'Barnet III';
     this.teamname5 = 'Barnet V';
 
     this.loadPlayersListsBase();
   }
 }
-
-TeamsDataController.$inject = ['httpPlayersService'];
 
 export const TeamsDataCtrl = TeamsDataController;
 
