@@ -8,9 +8,8 @@ import {PlayerService} from './app/players/players';
 import {App} from './app/containers/App';
 import {MainSection} from './app/components/MainSection';
 
-// import {TableRows} from './app/components/TableRows';
-import {PlayersListsCtrl} from './app/components/PlayersLists';
-import {TableRowsFiveCtrl} from './app/components/TableRowsES5';
+import {TableRowsCtrl} from './app/components/TableRows';
+// import {TableRowsFiveCtrl} from './app/components/TableRowsES5';
 import {TableRowsComponent} from './app/components/TableRowsComponent';
 import {TablePlayers} from './app/components/TablePlayers';
 import {RowPlayer} from './app/components/RowPlayer';
@@ -29,16 +28,13 @@ angular
   .service('playerService', PlayerService)
   .service('httpPlayersService', HttpPlayersService)
   .component('app', App)
-  // .component('headerComponent', Header)
-  // .component('footerComponent', Footer)
   .component('mainSection', MainSection)
   // .component('teamComponent', Team)
   // .component('playerItem', PlayerItem)
   // .component('todoTextInput', TodoTextInput)
   // .component('todoItem', TodoItem)
-  // .controller('tableRowsController', TableRows)
-  // .controller('baseTableController', PlayersListsCtrl)
-  .controller('tableRowsFiveController', TableRowsFiveCtrl)
+  .controller('tableRowsController', TableRowsCtrl)
+  // .controller('tableRowsFiveController', TableRowsFiveCtrl)
   .component('tableRowsComponent', TableRowsComponent)
   .directive('tablePlayers', TablePlayers)
   // .component('tablePlayers', TablePlayers)
