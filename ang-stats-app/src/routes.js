@@ -14,8 +14,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('teams', {
       url: '/teams',
-      template: `<h1>teams</h1>
+      template: `<h1>Teams List</h1>
       <a href="http://localhost:3002/team3">team 3</a>
+      <br>
       <a href="http://localhost:3002/team5">team 5</a>
       `
       // component: 'app'

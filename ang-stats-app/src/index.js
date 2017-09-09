@@ -9,6 +9,7 @@ import {App} from './app/containers/App';
 import {MainSection} from './app/components/MainSection';
 
 // import {TableRows} from './app/components/TableRows';
+import {BaseTableCtrl} from './app/components/BaseTable';
 import {TableRowsFiveCtrl} from './app/components/TableRowsES5';
 import {TableRowsComponent} from './app/components/TableRowsComponent';
 import {TablePlayers} from './app/components/TablePlayers';
@@ -36,6 +37,7 @@ angular
   // .component('todoTextInput', TodoTextInput)
   // .component('todoItem', TodoItem)
   // .controller('tableRowsController', TableRows)
+  .controller('baseTableController', BaseTableCtrl)
   .controller('tableRowsFiveController', TableRowsFiveCtrl)
   .component('tableRowsComponent', TableRowsComponent)
   .directive('tablePlayers', TablePlayers)
