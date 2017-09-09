@@ -1,9 +1,9 @@
 /* eslint comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0, no-extra-semi: 0, space-before-function-paren: 0, padded-blocks: 0 */
 
-function BaseTableController() {
+function PlayersListsController() {
 };
 
-BaseTableController.prototype.loadPlayersListsBase = function () {
+PlayersListsController.prototype.loadPlayersListsBase = function () {
   const handleHttpError = errResp => {
     // console.log('trusted', trustedUrl.unwrapTrustedValue());
     // console.log('error', errResp);
@@ -22,6 +22,6 @@ BaseTableController.prototype.loadPlayersListsBase = function () {
   });
 };
 
-BaseTableController.$inject = ['httpPlayersService'];
+PlayersListsController.$inject = ['httpPlayersService'];
 
-export const BaseTableCtrl = BaseTableController;
+export const PlayersListsCtrl = PlayersListsController;
