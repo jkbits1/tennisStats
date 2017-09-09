@@ -2,7 +2,7 @@
 
 import {PlayersListsCtrl} from './PlayersLists';
 
-class TableRowsController extends PlayersListsCtrl {
+class TeamsDataController extends PlayersListsCtrl {
   /** @ngInject */
   constructor(httpPlayersService) {
     super();
@@ -17,9 +17,9 @@ class TableRowsController extends PlayersListsCtrl {
   }
 }
 
-TableRowsController.$inject = ['httpPlayersService'];
+TeamsDataController.$inject = ['httpPlayersService'];
 
-export const TableRowsCtrl = TableRowsController;
+export const TeamsDataCtrl = TeamsDataController;
 
 // export const TableRows = {
 //   template: require('./TableRows.html'),

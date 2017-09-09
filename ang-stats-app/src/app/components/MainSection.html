@@ -1,14 +1,8 @@
 <section class="main">
   <!--<div ng-controller="tableRowsFiveController as $ctrl">-->
-  <div ng-controller="tableRowsController as $ctrl">
+  <div ng-controller="teamsDataController as $ctrl">
     <table-players players="$ctrl.players5" teamname="$ctrl.teamname5"></table-players>
   </div>
-  <!--<table>
-    <tr ng-repeat="todo in $ctrl.todos">
-      <td>{{todo.Rank}}</td>
-      <td>{{todo.Name}}</td>
-    </tr>
-  </table>-->
   <!--<table class="todo-list">
     <todo-item
       ng-repeat="todo in $ctrl.todos | filter : $ctrl.selectedFilter.filter"
@@ -18,15 +12,6 @@
       on-save="$ctrl.handleSave(todo)"
     ></todo-item>
   </table>-->
-  <!--Players-->
-  <!--<ul class="player-list">
-    <li player-item
-      ng-repeat="player in $ctrl.players"
-      player="player"
-    >
-    </li>-->
-    <!--</player-item>-->
-  <!--</ul>-->
   <!--Team
   <team-component
     players="$ctrl.players"

@@ -8,7 +8,7 @@ import {PlayerService} from './app/players/players';
 import {App} from './app/containers/App';
 import {MainSection} from './app/components/MainSection';
 
-import {TableRowsCtrl} from './app/components/TableRows';
+import {TeamsDataCtrl} from './app/components/TeamsData';
 // import {TableRowsFiveCtrl} from './app/components/TableRowsES5';
 import {TableRowsComponent} from './app/components/TableRowsComponent';
 import {TablePlayers} from './app/components/TablePlayers';
@@ -33,7 +33,7 @@ angular
   // .component('playerItem', PlayerItem)
   // .component('todoTextInput', TodoTextInput)
   // .component('todoItem', TodoItem)
-  .controller('tableRowsController', TableRowsCtrl)
+  .controller('teamsDataController', TeamsDataCtrl)
   // .controller('tableRowsFiveController', TableRowsFiveCtrl)
   .component('tableRowsComponent', TableRowsComponent)
   .directive('tablePlayers', TablePlayers)
