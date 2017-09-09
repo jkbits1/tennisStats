@@ -2,7 +2,7 @@
 
 import {PlayersListsCtrl} from './PlayersLists';
 
-class TableRowsComponentController extends PlayersListsCtrl {
+class TeamsDataComponentController extends PlayersListsCtrl {
   /** @ngInject */
   constructor (httpPlayersService) {
     super();
@@ -11,16 +11,10 @@ class TableRowsComponentController extends PlayersListsCtrl {
 
     // $scope.teamname = 'Barnet III';
     this.teamname3 = 'Barnet III';
+    this.teamname5 = 'Barnet V';
 
     this.loadPlayersListsBase();
   }
 }
 
-TableRowsComponentController.$inject = ['httpPlayersService'];
-
-export const TableRowsComponent = {
-  template: require('./TableRowsComponent.html'),
-  controller: TableRowsComponentController
-  // bindings: {}
-};
-
+export const TeamsDataComponentCtrl = TeamsDataComponentController;

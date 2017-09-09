@@ -10,7 +10,8 @@ import {MainSection} from './app/components/MainSection';
 
 import {TeamsDataCtrl} from './app/components/TeamsData';
 // import {TableRowsFiveCtrl} from './app/components/TableRowsES5';
-import {TableRowsComponent} from './app/components/TableRowsComponent';
+import {TeamsDataComponent} from './app/components/TeamsDataComponent';
+import {Team5Component} from './app/components/Team5Component';
 import {TablePlayers} from './app/components/TablePlayers';
 import {RowPlayer} from './app/components/RowPlayer';
 
@@ -35,7 +36,8 @@ angular
   // .component('todoItem', TodoItem)
   .controller('teamsDataController', TeamsDataCtrl)
   // .controller('tableRowsFiveController', TableRowsFiveCtrl)
-  .component('tableRowsComponent', TableRowsComponent)
+  .component('teamsDataComponent', TeamsDataComponent)
+  .component('team5Component', Team5Component)
   .directive('tablePlayers', TablePlayers)
   // .component('tablePlayers', TablePlayers)
   .directive('rowPlayer', RowPlayer);
