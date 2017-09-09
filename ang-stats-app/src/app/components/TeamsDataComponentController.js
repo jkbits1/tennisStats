@@ -9,7 +9,6 @@ class TeamsDataComponentController extends PlayersListsCtrl {
 
     this.httpPlayersService = httpPlayersService;
 
-    // $scope.teamname = 'Barnet III';
     this.teamname3 = 'Barnet III';
     this.teamname5 = 'Barnet V';
 
