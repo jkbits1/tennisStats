@@ -9,7 +9,6 @@ import {App} from './app/containers/App';
 import {MainSection} from './app/components/MainSection';
 
 import {TeamsDataCtrl} from './app/components/TeamsData';
-// import {TableRowsFiveCtrl} from './app/components/TableRowsES5';
 import {TeamsDataComponent} from './app/components/TeamsDataComponent';
 import {Team5Component} from './app/components/Team5Component';
 import {TablePlayers} from './app/components/TablePlayers';
@@ -35,7 +34,6 @@ angular
   // .component('todoTextInput', TodoTextInput)
   // .component('todoItem', TodoItem)
   .controller('teamsDataController', TeamsDataCtrl)
-  // .controller('tableRowsFiveController', TableRowsFiveCtrl)
   .component('teamsDataComponent', TeamsDataComponent)
   .component('team5Component', Team5Component)
   .directive('tablePlayers', TablePlayers)
