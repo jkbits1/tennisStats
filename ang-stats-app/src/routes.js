@@ -29,15 +29,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('team3a', {
       url: '/team3a',
       templateUrl: './app/components/Team3.html',
-      controller: 'teamsDataController',
-      controllerAs: '$ctrl'
+      controller: 'teamsDataController as $ctrl'
     })
     .state('team5', {
       url: '/team5',
       // component: 'app'
       templateUrl: './app/components/Team5.html',
-      controller: 'teamsDataController',
-      controllerAs: '$ctrl'
+      controller: 'teamsDataController as $ctrl'
     })
     .state('team5a', {
       url: '/team5a',
