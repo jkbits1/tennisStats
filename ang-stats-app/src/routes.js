@@ -19,11 +19,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       <br>
       <a href="/team5">team 5</a>
       `
-      // component: 'app'
     })
     .state('team3', {
       url: '/team3',
-      // template: '<h1>hi there</h1>'
       component: 'teamsDataComponent'
     })
     .state('team3a', {
@@ -33,7 +31,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('team5', {
       url: '/team5',
-      // component: 'app'
       templateUrl: './app/components/Team5.html',
       controller: 'teamsDataController as $ctrl'
     })
