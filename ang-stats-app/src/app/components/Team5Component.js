@@ -6,7 +6,8 @@ export const Team5Component = {
   template: require('./Team5Component.html'),
   controller: TeamsDataComponentCtrl,
   bindings: {
-    playersData: '<'
+    playersData: '<',
+    teamInfo: '<'
   }
 };
 

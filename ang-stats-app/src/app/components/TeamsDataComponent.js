@@ -7,7 +7,8 @@ export const TeamsDataComponent = {
   template: require('./TeamsDataComponent.html'),
   controller: TeamsDataComponentCtrl,
   bindings: {
-    playersData: '<'
+    playersData: '<',
+    teamInfo: '<'
   }
 };
 

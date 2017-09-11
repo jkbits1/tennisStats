@@ -9,18 +9,16 @@ class TeamsDataComponentController extends PlayersListsCtrl {
 
     this.httpPlayersService = httpPlayersService;
 
-    if (this.players === undefined) {
-      console.log('no players yet');
-
-      this.players = [];
-    } else {
-      console.log('players', this.players);
-    }
+    this.checkForPlayers();
   }
 
   $onChanges (changes) {
     if (changes.playersData) {
       this.managePlayersData(this.playersData);
+    }
+
+    if (changes.teamInfo) {
+      console.log('teamInfo', this.teamInfo);
     }
   }
 }

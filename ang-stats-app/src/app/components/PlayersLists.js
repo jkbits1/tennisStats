@@ -1,8 +1,6 @@
-/* eslint comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0, no-extra-semi: 0, space-before-function-paren: 0, padded-blocks: 0 */
+/* eslint comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0, no-extra-semi: 0, space-before-function-paren: 0, padded-blocks: 0, angular/definedundefined: 0 */
 
 function PlayersListsController() {
-  this.teamname3 = 'Barnet III';
-  this.teamname5 = 'Barnet V';
 
   this.managePlayersData = data => {
     console.log('players arrived', data);
@@ -11,13 +9,38 @@ function PlayersListsController() {
 
     playerFn(data);
   };
+
+  this.checkForPlayers = () => {
+    if (this.players === undefined) {
+      console.log('no players yet');
+
+      this.players = [];
+    } else {
+      console.log('players', this.players);
+    }
+  };
 };
 
 PlayersListsController.createResolveObject = teamId => {
+
+  let teamName = '';
+
+  if (teamId === '3') {
+    teamName = 'Barnet III';
+  } else {
+    teamName = 'Barnet V';
+  }
+
   return {
     playersData: ['httpPlayersService', httpPlayersService => {
       return httpPlayersService.getPlayers(teamId);
-    }]
+    }],
+    teamInfo: function () {
+      return {
+        teamId: teamId,
+        teamName: teamName
+      };
+    }
   };
 };
 

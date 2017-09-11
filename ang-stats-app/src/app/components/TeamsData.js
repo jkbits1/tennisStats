@@ -4,10 +4,12 @@ import {PlayersListsCtrl} from './PlayersLists';
 
 class TeamsDataController extends PlayersListsCtrl {
   /** @ngInject */
-  constructor(httpPlayersService, playersData) {
+  constructor(httpPlayersService, playersData, teamInfo) {
     super();
 
     this.httpPlayersService = httpPlayersService;
+
+    this.teamInfo = teamInfo;
 
     this.managePlayersData(playersData);
   }
