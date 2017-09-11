@@ -32,19 +32,19 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('team3a', {
       url: '/team3a',
-      templateUrl: './app/components/Team3.html',
+      templateUrl: './app/components/TeamStats.html',
       controller: 'teamsDataController as $ctrl',
       resolve: resolveTeam3
     })
     .state('team3b', {
       url: '/team3b',
-      templateUrl: './app/components/Team3.html',
+      templateUrl: './app/components/TeamStats.html',
       controller: 'teamsDataController as $ctrl',
       resolve: resolveTeam3
     })
     .state('team5', {
       url: '/team5',
-      templateUrl: './app/components/Team5.html',
+      templateUrl: './app/components/TeamStats.html',
       controller: 'teamsDataController as $ctrl',
       resolve: resolveTeam5
     })

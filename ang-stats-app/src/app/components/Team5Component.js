@@ -3,7 +3,7 @@
 import {TeamsDataComponentCtrl} from './TeamsDataComponentController';
 
 export const Team5Component = {
-  template: require('./Team5Component.html'),
+  template: require('./TeamStats.html'),
   controller: TeamsDataComponentCtrl,
   bindings: {
     playersData: '<',

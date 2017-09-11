@@ -14,7 +14,7 @@ import {Team5Component} from './app/components/Team5Component';
 import {TablePlayers} from './app/components/TablePlayers';
 import {RowPlayer} from './app/components/RowPlayer';
 
-import {HttpPlayersService} from './app/components/HttpPlayersService';
+import {HttpPlayersService} from './app/services/HttpPlayersService';
 
 import 'angular-ui-router';
 import routesConfig from './routes';
