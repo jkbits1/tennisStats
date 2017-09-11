@@ -51,7 +51,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('team5a', {
       url: '/team5a',
       // component: 'app'
-      component: 'team5Component',
+      component: 'teamsDataComponent',
       resolve: resolveTeam5
     });
 }
