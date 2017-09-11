@@ -1,4 +1,4 @@
-/* eslint comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0, no-extra-semi: 0, space-before-function-paren: 0 */
+/* eslint comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0, no-extra-semi: 0, space-before-function-paren: 0, angular/definedundefined: 0, no-negated-condition: 0 */
 
 // following pattern in first answer.
 // second answer is good on dom manips
@@ -178,7 +178,11 @@ function TablePlayersController ($scope) {
     $scope.sorted[sortIdx] = true;
     $scope.ascend[sortIdx] = !$scope.ascend[sortIdx];
 
-    $scope.players.sort(sortFn);
+    if ($scope.players !== undefined) {
+      $scope.players.sort(sortFn);
+    } else {
+      console.log('table players undefined', $scope.players);
+    }
   };
 
   $scope.sortPlayersByName = sortByFunction(sortByName, $scope.NAME_IDX);
