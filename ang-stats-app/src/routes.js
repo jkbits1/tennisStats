@@ -36,12 +36,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'teamsDataController as $ctrl',
       resolve: resolveTeam3
     })
-    .state('team3b', {
-      url: '/team3b',
-      templateUrl: './app/components/TeamStats.html',
-      controller: 'teamsDataController as $ctrl',
-      resolve: resolveTeam3
-    })
     .state('team5', {
       url: '/team5',
       templateUrl: './app/components/TeamStats.html',
