@@ -9,9 +9,6 @@ class TeamsDataComponentController extends PlayersListsCtrl {
 
     this.httpPlayersService = httpPlayersService;
 
-    this.teamname3 = 'Barnet III';
-    this.teamname5 = 'Barnet V';
-
     if (this.players === undefined) {
       console.log('no players yet');
 
@@ -19,18 +16,11 @@ class TeamsDataComponentController extends PlayersListsCtrl {
     } else {
       console.log('players', this.players);
     }
-
-    this.loadPlayersListsBase();
   }
 
   $onChanges (changes) {
     if (changes.playersData) {
-      console.log('players arrived', this.playersData);
-
-      const playerFn = this.httpPlayersService.getPlayerData('players', this);
-      // this.players = Object.assign({}, this.players);
-
-      playerFn(this.playersData);
+      this.managePlayersData(this.playersData);
     }
   }
 }
