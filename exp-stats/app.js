@@ -18,7 +18,8 @@ const Datastore = require('nedb');
 const db = new Datastore({
     filename:
       // path.join('examples', 'step', 'data', 'players.db')
-      '/usr/src/app/node_modules/players.db'
+      // '/usr/src/app/node_modules/players.db'
+      './node_modules/players.db'
   , autoload: true
 });
 
@@ -39,44 +40,12 @@ db.loadDatabase(err => {
 
     console.log("remove count", removeCount);
 
-    fs.readFile('./players.txt', 'utf8', (err, data) => {
+    const processTeamDataFile = teamId => (err, data) => {
       if (err) {
         throw err;
       }
-
-      // console.log("data", data);
-
-      const playerDetails = JSON.parse(data);
-
-      const teamFiveDetails = {
-        team: '5',
-        players: playerDetails
-      }
-      // const playerPromises = [];
-
-      db.insert(teamFiveDetails, (err, results) => {
-        if (err) {
-          console.log("err", err);
-          return;
-        }
-
-        const teamInfo = results;
-
-        teamInfo.players.forEach(player => {
-          console.log("t5 player", player); 
-        });
-      });    
-    });
-
-    fs.readFile('./team3.json', 'utf8', (err, data) => {
-      if (err) {
-        throw err;
-      }
-      // console.log("team data", data);
 
       const teamDetails = JSON.parse(data);
-
-      console.log("team details", teamDetails);
 
       db.insert(teamDetails, (err, results) => {
         if (err) {
@@ -84,18 +53,20 @@ db.loadDatabase(err => {
           return;
         }
 
-        // console.log("inserted", results); 
-
         const teamInfo = results;
 
         teamInfo.players.forEach(player => {
-          console.log("t3 player", player); 
+          console.log(teamId + " player", player); 
         });
       });    
-    });
+    };
+
+    const processTeam3File = processTeamDataFile("t3");
+    const processTeam5File = processTeamDataFile("t5");
+
+    fs.readFile('./team3.json', 'utf8', processTeam3File);
+    fs.readFile('./team5.json', 'utf8', processTeam5File);
   });
-
-
 });
 
 var app = express();
