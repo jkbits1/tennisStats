@@ -1,10 +1,11 @@
+/* eslint linebreak-style: 0 */
 
 // angular
 //   .module('app')
 //   .service('HttpPlayersService', HttpPlayersService);
 
 function PlayersService($http, $sce) {
-  const url = 'http://localhost:8080/teams/';
+  const url = 'https://tennis-stats.herokuapp.com/teams/';
 
   this.getPlayers = function (teamId) {
     return $http.jsonp($sce.trustAsResourceUrl(url + teamId), {jsonpCallbackParam: 'callback'});
