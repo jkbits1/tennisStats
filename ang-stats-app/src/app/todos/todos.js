@@ -1,3 +1,5 @@
+/* eslint linebreak-style: 0 */
+
 export const initialTodo = {
   text: 'Use AngularJS',
   completed: false,

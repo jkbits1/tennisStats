@@ -1,3 +1,5 @@
+/* eslint linebreak-style: 0 */
+
 import {SHOW_ALL} from '../constants/TodoFilters';
 // import {initialTodo} from '../todos/todos';
 // import {initialPlayer} from '../players/players';

@@ -1,3 +1,5 @@
+/* eslint linebreak-style: 0 */
+
 export const initialPlayer = {
   text: 'user server data',
   id: 0

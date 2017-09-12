@@ -1,4 +1,4 @@
-/* eslint comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0, no-extra-semi: 0, space-before-function-paren: 0, func-names: 0, prefer-arrow-callback: 0 */
+/* eslint linebreak-style: 0, comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0, no-extra-semi: 0, space-before-function-paren: 0, func-names: 0, prefer-arrow-callback: 0 */
 
 import angular from 'angular';
 // import 'todomvc-app-css/index.css';

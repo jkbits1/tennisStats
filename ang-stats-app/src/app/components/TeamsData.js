@@ -1,4 +1,4 @@
-/* eslint no-undef:0, comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0 */
+/* eslint linebreak-style: 0, no-undef:0, comma-style: 0, indent: 0, no-unused-vars: 0, object-shorthand: 0, angular/log: 0 */
 
 import {PlayersListsCtrl} from './PlayersLists';
 

@@ -1,3 +1,5 @@
+/* eslint linebreak-style: 0 */
+
 import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from './TodoFilters';
 
 function showAll() {

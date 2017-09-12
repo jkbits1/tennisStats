@@ -1,4 +1,4 @@
-/* eslint angular/controller-as-route: 0, no-unused-vars: 0 */
+/* eslint linebreak-style: 0, angular/controller-as-route: 0, no-unused-vars: 0 */
 
 export default routesConfig;
 

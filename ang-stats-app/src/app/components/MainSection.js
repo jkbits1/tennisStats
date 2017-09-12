@@ -1,3 +1,5 @@
+/* eslint linebreak-style: 0 */
+
 import visibilityFilters from '../constants/VisibilityFilters';
 
 class MainSectionController {
