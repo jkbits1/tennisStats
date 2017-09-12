@@ -247,7 +247,7 @@ TablePlayersController.$inject = ['$scope'];
 function TablePlayersDirective () {
     return {
         restrict: 'E',
-        templateUrl: './app/components/TablePlayers.html',
+        template: require('./TablePlayers.html'),
         scope: {
             players: '<',
             teamname: '<'

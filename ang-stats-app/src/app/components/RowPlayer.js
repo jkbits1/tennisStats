@@ -3,7 +3,7 @@
 function RowPlayerDirective () {
     return {
         restrict: 'A',
-        templateUrl: './app/components/RowPlayer.html',
+        template: require('./RowPlayer.html'),
 
         // template: [
         //     // '<tr class="player query-status-{{query.status}}">',

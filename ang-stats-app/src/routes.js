@@ -15,8 +15,17 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('app', {
       url: '/',
-      component: 'app'
-    })
+      template: `<h1>Teams List</h1>
+      <a href="/team3">team 3</a>
+      <br>
+      <a href="/team5">team 5</a>
+      `
+    }
+    // {
+    //   url: '/',
+    //   component: 'app'
+    // }
+    )
     .state('teams', {
       url: '/teams',
       template: `<h1>Teams List</h1>
@@ -32,13 +41,19 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('team3a', {
       url: '/team3a',
-      templateUrl: './app/components/TeamStats.html',
+      template: require('./app/components/TeamStats.html'),
+      controller: 'teamsDataController as $ctrl',
+      resolve: resolveTeam3
+    })
+    .state('team3b', {
+      url: '/team3b',
+      template: require('./app/components/TeamStats.html'),
       controller: 'teamsDataController as $ctrl',
       resolve: resolveTeam3
     })
     .state('team5', {
       url: '/team5',
-      templateUrl: './app/components/TeamStats.html',
+      template: require('./app/components/TeamStats.html'),
       controller: 'teamsDataController as $ctrl',
       resolve: resolveTeam5
     })
