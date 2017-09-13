@@ -8,6 +8,7 @@ import {PlayerService} from './app/players/players';
 import {App} from './app/containers/App';
 import {MainSection} from './app/components/MainSection';
 
+import {TeamsListComponent} from './app/components/TeamsListComponent';
 import {TeamsDataCtrl} from './app/components/TeamsData';
 import {TeamsDataComponent} from './app/components/TeamsDataComponent';
 import {Team5Component} from './app/components/Team5Component';
@@ -33,6 +34,7 @@ angular
   // .component('playerItem', PlayerItem)
   // .component('todoTextInput', TodoTextInput)
   // .component('todoItem', TodoItem)
+  .component('teamsListComponent', TeamsListComponent)
   .controller('teamsDataController', TeamsDataCtrl)
   .component('teamsDataComponent', TeamsDataComponent)
   .component('team5Component', Team5Component)

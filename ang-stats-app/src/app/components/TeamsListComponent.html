@@ -1,0 +1,12 @@
+<section class="main">
+  <h1>Teams List</h1>
+
+  Click the team name to view statistics for those players.
+
+  <ul ng-repeat="teamInfoItem in $ctrl.teamInfoItems">
+    <li class="team-list-item">
+      <a ng-href="{{teamInfoItem.teamRoute}}">{{teamInfoItem.teamName}}</a>
+    </li>
+  </ul>
+</section>
+
