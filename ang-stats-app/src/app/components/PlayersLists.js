@@ -24,11 +24,14 @@ function PlayersListsController() {
 PlayersListsController.createResolveObject = teamId => {
 
   let teamName = '';
+  let teamLink = '';
 
   if (teamId === '3') {
     teamName = 'Barnet III';
+    teamLink = 'http://lta.tournamentsoftware.com/sport/teamplayerstats.aspx?id=AE26B6DB-ED63-4277-B089-ADFF66DB4ECA&team=116';
   } else {
     teamName = 'Barnet V';
+    teamLink = 'http://lta.tournamentsoftware.com/sport/teamplayerstats.aspx?id=AE26B6DB-ED63-4277-B089-ADFF66DB4ECA&team=119';
   }
 
   return {
@@ -38,7 +41,8 @@ PlayersListsController.createResolveObject = teamId => {
     teamInfo: function () {
       return {
         teamId: teamId,
-        teamName: teamName
+        teamName: teamName,
+        teamLink: teamLink
       };
     }
   };

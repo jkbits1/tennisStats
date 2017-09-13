@@ -250,7 +250,8 @@ function TablePlayersDirective () {
         template: require('./TablePlayers.html'),
         scope: {
             players: '<',
-            teamname: '<'
+            teamname: '<',
+            teamlink: '<'
         },
         controller: TablePlayersController,
         link: function(scope, element) {

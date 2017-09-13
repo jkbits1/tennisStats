@@ -13,19 +13,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   const resolveTeam5 = PlayersListsCtrl.createResolveObject('5');
 
   $stateProvider
-    .state('app', {
+    .state('index', {
       url: '/',
-      template: `<h1>Teams List</h1>
-      <a href="/team3">team 3</a>
-      <br>
-      <a href="/team5">team 5</a>
-      `
-    }
-    // {
-    //   url: '/',
-    //   component: 'app'
-    // }
-    )
+      component: 'teamsListComponent'
+    })
     .state('teams', {
       url: '/teams',
       component: 'teamsListComponent'
