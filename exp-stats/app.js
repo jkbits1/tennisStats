@@ -81,9 +81,62 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+// app.use('/', express.static(path.join(__dirname, 'public')));
+// app.use('/teams', express.static(path.join(__dirname, 'public')));
+// app.use('/app/teams', express.static(path.join(__dirname, 'public')));
+
+const getIndexFile = (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+};
+
+// app.use('/', (req, res) => {
+//   // res.sendFile(__dirname + '/public/index.html');
+//   res.redirect('/app/teams/');
+// });
+
+app.use('/app/teams', getIndexFile);
+app.use('/app/team3*', getIndexFile);
+app.use('/app/team5', getIndexFile);
+
+const getDistFile = (req, res) => {
+  // var urlpath = path.join(__dirname, 'public/css/' + req.originalUrl);
+  var urlpath = path.join(__dirname, 'public/' + req.originalUrl);
+  console.log(urlpath);
+  res.sendFile(urlpath);
+};
+
+app.use('/index-*', getDistFile);
+app.use('/vendor-*', getDistFile);
+app.use('/app-*', getDistFile);
+
+// app.use('/app/', function(req, res){
+//   console.error("/app/ handling app sub path");
+
+//   res.sendFile(__dirname + '/public/index.html');
+// });
+
+// app.use('/*', function(req, res){
+//   console.error("/app/* handling app sub path");
+
+//   res.sendFile(__dirname + '/public/index.html');
+// });
+
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// app.use('/', index);
+// app.use('/', (req, res) => {
+//   console.error("redirect to app");
+
+//   res.redirect('/app');
+// });
+
+// app.use('/', function(req, res){
+//   console.error("/ handling no path");
+
+//   res.sendFile(__dirname + '/public/index.html');
+// });
+
 // app.use('/users', users);
 app.use('/players', players);
 app.use('/teams', teams);
@@ -92,7 +145,18 @@ app.use('/teams', teams);
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-  next(err);
+
+  console.log("not found");
+  console.error("not found");
+ 
+  // console.log("not found", err);
+  // console.error("not found", err);
+ 
+  // next(err);
+
+
+  // getIndexFile(req, res);
+  res.redirect('/app/teams');
 });
 
 // error handler
