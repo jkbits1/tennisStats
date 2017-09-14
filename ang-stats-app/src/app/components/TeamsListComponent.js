@@ -8,11 +8,11 @@ class TeamsListComponentCtrl {
     this.teamInfoItems = [
       {
         teamName: 'Middx 3',
-        teamRoute: '/team3'
+        teamRoute: '/app/team3'
       },
       {
         teamName: 'Middx 5',
-        teamRoute: '/team5'
+        teamRoute: '/app/team5'
       }
     ];
   }
